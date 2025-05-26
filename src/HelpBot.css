@@ -1,0 +1,111 @@
+.helpbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  font-family: Arial, sans-serif;
+}
+
+.helpbot-toggle {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.helpbot-chatbox {
+  width: 320px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.chat-body {
+  padding: 15px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.placeholder {
+  color: #555;
+  font-style: italic;
+}
+
+.messages .message {
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+.message.user {
+  background-color: #e1f5fe;
+  padding: 8px 12px;
+  border-radius: 15px;
+  display: inline-block;
+}
+
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ccc;
+  padding: 10px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+.error-message {
+  color: red;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.report-btn {
+  background: transparent;
+  color: #007bff;
+  border: none;
+  padding: 0;
+  margin-top: 0.3rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+.report-btn:hover {
+  color: #0056b3;
+}

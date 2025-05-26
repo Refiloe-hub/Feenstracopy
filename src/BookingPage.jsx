@@ -3,6 +3,7 @@ import './BookingPage.css';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import HelpBot from './HelpBot';
 
 export default function BookingPage() {
   const [region, setRegion] = useState('');
@@ -75,8 +76,9 @@ export default function BookingPage() {
       <hr />
 
       <form onSubmit={handleSubmit} className="booking-form-2col">
-        {/* Region and Building */}
-        <div className="form-group">
+        
+        {/* Region and Building Section */}
+        <div className="form-group" data-help-section="region-selection">
           <label>Select your Region*</label>
           <select value={region} onChange={(e) => setRegion(e.target.value)} required>
             <option value="" disabled>Select a region</option>
@@ -86,7 +88,7 @@ export default function BookingPage() {
           </select>
         </div>
 
-        <div className="form-group">
+        <div className="form-group" data-help-section="building-selection">
           <label>Select your Building*</label>
           <select value={property} onChange={(e) => setProperty(e.target.value)} required>
             <option value="" disabled>Select a building</option>
@@ -97,8 +99,8 @@ export default function BookingPage() {
           </select>
         </div>
 
-        {/* Room Type Carousel */}
-        <div className="form-group full-width">
+        {/* Room Carousel */}
+        <div className="form-group full-width" data-help-section="room-carousel">
           <label>Select Room Type*</label>
           <Slider {...sliderSettings}>
             {roomTypes.map((room, idx) => (
@@ -116,40 +118,43 @@ export default function BookingPage() {
         </div>
 
         {/* User Info */}
-        <div className="form-group">
+        <div className="form-group" data-help-section="name">
           <label>First Name*</label>
           <input type="text" name="name" value={formData.name} onChange={handleChange} required />
         </div>
 
-        <div className="form-group">
+        <div className="form-group" data-help-section="surname">
           <label>Surname*</label>
           <input type="text" name="surname" value={formData.surname} onChange={handleChange} required />
         </div>
 
-        <div className="form-group">
+        <div className="form-group" data-help-section="contact">
           <label>Contact No.*</label>
           <input type="tel" name="contact" value={formData.contact} onChange={handleChange} required />
         </div>
 
-        <div className="form-group">
+        <div className="form-group" data-help-section="email">
           <label>Email*</label>
           <input type="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
 
-        <div className="form-group">
+        <div className="form-group" data-help-section="date">
           <label>Select Date*</label>
           <input type="date" name="date" value={formData.date} onChange={handleChange} required />
         </div>
 
-        <div className="form-group">
+        <div className="form-group" data-help-section="time">
           <label>Select Time*</label>
           <input type="time" name="time" value={formData.time} onChange={handleChange} required />
         </div>
 
-        <div className="form-group full-width">
+        <div className="form-group full-width" data-help-section="submit">
           <button type="submit">Book Viewing</button>
         </div>
       </form>
+
+      {/* HelpBot Component */}
+      <HelpBot />
     </div>
   );
 }
