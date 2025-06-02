@@ -1,0 +1,178 @@
+.booking-container {
+  background-color: #f1f3f2;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+}
+
+.booking-container h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.booking-container hr {
+  margin: 10px auto 30px;
+  width: 50%;
+  border: none;
+  border-top: 2px solid #ccc;
+}
+
+.booking-form-2col {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.full-width {
+  width: 100%;
+  text-align: right;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #666666;  
+  transition: border-color 0.3s ease;
+}
+.form-group input[type="date"],
+.form-group input[type="time"] {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+.form-group select {
+  background-color: #e8f0fe;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  cursor: pointer;
+}
+
+/* Placeholder option styling */
+.form-group select option:first-child {
+  color: #999;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #0077cc;
+  outline: none;
+  background-color: #fff;
+}
+
+button[type="submit"] {
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  background-color: #f5c044;
+  color: #000;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #41cee7;
+}
+
+.carousel-container {
+  margin-bottom: 40px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  padding: 10px 0;
+  gap: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel-card {
+  cursor: pointer;
+  padding: 15px;
+  margin: 10px;
+  text-align: center;
+  border-radius: 10px;
+  width: 120px;
+  flex: 0 0 auto;
+  transition: border 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* When the card is selected */
+.carousel-card.selected {
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+}
+
+/* Optional: on hover effect */
+.carousel-card:hover {
+  background-color: #f0f0f0;
+  border-color: #aaa;
+  transform: scale(1.05);
+}
+
+/* Space for the dots */
+.slick-dots {
+  bottom: -30px;
+}
+
+.carousel-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.carousel-card p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.carousel-card button {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  background-color: #f5c044;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.carousel-card button:hover {
+  background-color: #e0ae3b;
+}
+
+@media screen and (max-width: 768px) {
+  .form-group {
+    width: 100%;
+  }
+
+  .full-width {
+    text-align: center;
+  }
+}
