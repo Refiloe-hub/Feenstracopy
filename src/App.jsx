@@ -6,6 +6,7 @@ import HelpBot from './HelpBot';
 import LeaseAutomation from './LeaseAutomation';
 import RegistrationForm from './RegistrationForm'
 import PersonalInformation from './PersonalInfo';
+import InstitutionInfo from './InstitutionInfo';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         <Route path="/lease-automation" element={<LeaseAutomation />} />
         <Route path="/registration-form" element={<RegistrationForm />} />
         <Route path="/personal-infomation" element={<PersonalInformation />} />
+        <Route path="/institution-info" element={<InstitutionInfo />} />
+        
+        
       </Routes>
     </Router>
   );

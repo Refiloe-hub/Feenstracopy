@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './PersonalInfo.css';
 
 const PersonalInformation = () => {
+  const navigate = useNavigate();
+
   const [idFile, setIdFile] = useState(null);
   const [name, setName] = useState('John Doe');
   const [gender, setGender] = useState('Male');
@@ -16,9 +19,18 @@ const PersonalInformation = () => {
 
   const toggleOverride = () => setManualOverride(!manualOverride);
 
+  const handleNext = () => {
+    // You can also validate or store data in context/state here
+    navigate('/institution-info');
+  };
+
+  const handlePrevious = () => {
+    navigate(-1); // or navigate to a specific path if needed
+  };
+
   return (
     <div className="personal-info-container">
-      <h2>Step 2: Personal Information</h2>
+      <h2>Personal Information</h2>
 
       <div className="form-group">
         <label>Upload ID Document</label>
@@ -62,6 +74,11 @@ const PersonalInformation = () => {
 
       <div className={`status ${verified ? 'verified' : 'not-verified'}`}>
         {verified ? '✅ Verified Automatically' : '❌ Not Verified'}
+      </div>
+
+      <div className="form-buttons">
+        <button className="prev-btn" onClick={handlePrevious}>Previous</button>
+        <button className="next-btn" onClick={handleNext}>Save & Proceed</button>
       </div>
     </div>
   );

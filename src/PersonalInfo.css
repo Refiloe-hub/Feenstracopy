@@ -1,63 +1,134 @@
 .personal-info-container {
   background: #fff;
-  padding: 2rem;
-  max-width: 500px;
-  margin: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2.5rem 2rem;
+  max-width: 600px;
+  margin: 2rem auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   font-family: 'Segoe UI', sans-serif;
+  transition: box-shadow 0.3s ease;
+}
+
+.personal-info-container:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
-  color: #333;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-size: 1.75rem;
 }
 
 .form-group {
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
 .form-group label {
   display: block;
   font-weight: 600;
-  margin-bottom: 0.5rem;
-  color: #555;
+  margin-bottom: 0.6rem;
+  color: #34495e;
+  font-size: 0.95rem;
 }
 
 .form-group input,
 .form-group select {
-  width: 100%;
-  padding: 0.6rem;
+  width: 1000 px;
+  padding: 0.75rem 1rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  outline: none;
 }
 
 .form-group.checkbox label {
   display: flex;
   align-items: center;
+  font-size: 0.95rem;
 }
 
 .file-name {
   font-size: 0.9rem;
-  margin-top: 0.3rem;
-  color: #007BFF;
+  margin-top: 0.4rem;
+  color: #007bff;
+  word-break: break-word;
 }
 
 .status {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   font-weight: bold;
   text-align: center;
-  padding: 0.5rem;
-  border-radius: 4px;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .status.verified {
   background: #d4edda;
   color: #155724;
+  border: 1px solid #c3e6cb;
 }
 
 .status.not-verified {
-  background: #f8d7da;
-  color: #721c24;
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
+/* Button Styling */
+button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+button:active {
+  background-color: #2471a3;
+  transform: translateY(0);
+}
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.prev-btn,
+.next-btn {
+  padding: 0.7rem 1.4rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.prev-btn {
+  background-color: #ccc;
+  color: #333;
+}
+
+.next-btn {
+  background-color: #007bff;
+  color: white;
 }

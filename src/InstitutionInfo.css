@@ -1,0 +1,97 @@
+.institution-info-container {
+  background: #fff;
+  padding: 2.5rem;
+  margin: 2rem auto;
+  max-width: 750px; /* Increased width */
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.institution-info-container h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-size: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #333;
+  font-size: 1.1rem; /* Bigger label text */
+}
+
+.form-group input[type="file"],
+.form-group input[type="text"],
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1.05rem;
+  background-color: #f9f9f9;
+  transition: border 0.3s ease;
+}
+
+.form-group input[type="file"]:focus,
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #fff;
+}
+
+.form-group.checkbox label {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: #333;
+  font-size: 1.05rem;
+}
+
+.file-name {
+  font-size: 0.95rem;
+  color: #007bff;
+  margin-top: 0.4rem;
+}
+
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.prev-btn,
+.next-btn {
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.prev-btn {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.next-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.prev-btn:hover {
+  background-color: #cfcfcf;
+}
+
+.next-btn:hover {
+  background-color: #0069d9;
+}
