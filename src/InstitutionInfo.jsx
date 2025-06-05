@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import './InstitutionInfo.css';
+import { useNavigate } from 'react-router-dom';
+
+
 
 export default function InstitutionInfo() {
   const [fileName, setFileName] = useState('');
@@ -7,20 +10,32 @@ export default function InstitutionInfo() {
   const [region, setRegion] = useState('');
   const [institution, setInstitution] = useState('');
   const [studyDetails, setStudyDetails] = useState('');
+  const navigate = useNavigate();
+
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setFileName(file.name);
-      // You'd trigger OCR / extraction logic here.
+      
     }
   };
+  
 
   const regionOptions = ['Johannesburg', 'Cape Town', 'Pretoria'];
   const institutionOptions = {
     Johannesburg: ['Wits University', 'UJ', 'Boston College'],
     'Cape Town': ['UCT', 'CPUT', 'Stellenbosch University'],
     Pretoria: ['UP', 'TUT', 'UNISA']
+  };
+    const handleProceed = () => {
+    // Add any validation or save logic here if needed
+    navigate('/guarantor-info');
+  };
+
+  const handlePrevious = () => {
+    // Navigate to previous step, update the path accordingly
+    navigate(-1); // Goes back one page
   };
 
   return (
@@ -80,6 +95,10 @@ export default function InstitutionInfo() {
           </div>
         </>
       )}
+      <div className="form-actions">
+        <button onClick={handlePrevious} className="prev-btn">Previous</button>
+        <button onClick={handleProceed} className="next-btn">Save and Proceed</button>
+      </div>
     </div>
   );
 }

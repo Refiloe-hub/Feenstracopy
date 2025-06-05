@@ -7,6 +7,11 @@ import LeaseAutomation from './LeaseAutomation';
 import RegistrationForm from './RegistrationForm'
 import PersonalInformation from './PersonalInfo';
 import InstitutionInfo from './InstitutionInfo';
+import GuarantorInfo from './Guarantor';
+import ApplicationPeriod from './ApplicationPeriod'
+
+
+
 
 function App() {
   return (
@@ -26,6 +31,10 @@ function App() {
         <Route path="/registration-form" element={<RegistrationForm />} />
         <Route path="/personal-infomation" element={<PersonalInformation />} />
         <Route path="/institution-info" element={<InstitutionInfo />} />
+        <Route path="/guarantor-info" element={<GuarantorInfo />}  />
+        <Route path="/application-period" element={<ApplicationPeriod />} />
+    
+       
         
         
       </Routes>

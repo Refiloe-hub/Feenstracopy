@@ -1,0 +1,61 @@
+.guarantor-info-container {
+  padding: 20px;
+  background: #000;
+  border-radius: 12px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.process-button {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.info-placeholder {
+  margin-top: 20px;
+  background: #fff3cd;
+  border-left: 5px solid #ffeeba;
+  padding: 10px;
+  border-radius: 8px;
+}
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.prev-btn, .next-btn, .process-button {
+  padding: 10px 16px;
+  border: none;
+  background-color: #f5c044;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.prev-btn:hover,
+.next-btn:hover,
+.process-button:hover {
+  background-color: #41cee7;
+}
+.info-preview {
+  color: #000; /* Change this to black or any visible color */
+  background-color: #000; /* Optional: add a subtle background */
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+

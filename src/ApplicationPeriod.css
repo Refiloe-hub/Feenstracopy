@@ -1,0 +1,159 @@
+
+.room-selection-container {
+  background-color: #f5f5f5; 
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+  color: #000;
+  width: 1500px;
+}
+
+
+.room-selection-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+
+.form-group {
+  margin-bottom: 1.5rem;
+  margin: auto;
+  
+}
+
+
+
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1.5rem;
+  
+}
+
+
+.carousel-wrapper {
+  margin-top: 2rem;
+}
+
+
+.slide-wrapper {
+  padding: 0.5rem;
+}
+
+
+.room-card {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+
+.room-card.within {
+  border-left: 6px solid #4caf50; /* green */
+}
+
+.room-card.outside {
+  border-left: 6px solid #f44336; /* red */
+}
+
+
+.room-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.room-card p {
+  margin: 0.5rem 0;
+  color: #444;
+}
+
+
+.badge {
+  display: inline-block;
+  margin: 0.5rem auto;
+  padding: 0.3rem 0.8rem;
+  background-color: #ffeeba;
+  color: #000;
+  border-radius: 12px;
+  font-size: 0.85rem;
+}
+
+
+.info-btn {
+  background-color: #ffd700; /* yellow */
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.info-btn:hover {
+  background-color: #e6c200;
+}
+
+
+.alert-container {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #ffe4e6;
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #f8b5be;
+}
+
+.alert {
+  background-color: #ffb6c1;
+  padding: 0.75rem;
+  font-weight: bold;
+  color: #000;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.warning {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.question {
+  margin: 0.75rem 0;
+}
+
+/* Yes Please Button */
+.yes-btn {
+  background-color: #ffd700;
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.yes-btn:hover {
+  background-color: #e6c200;
+}
+
+/* Responsive Fixes */
+@media (max-width: 768px) {
+  .room-card {
+    height: auto;
+  }
+
+  .carousel-wrapper {
+    margin-top: 1rem;
+  }
+}
