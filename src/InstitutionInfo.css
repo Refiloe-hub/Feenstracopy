@@ -2,7 +2,7 @@
   background: #fff;
   padding: 2.5rem;
   margin: 2rem auto;
-  max-width: 750px; /* Increased width */
+  width: 1200px;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
   font-family: 'Segoe UI', sans-serif;
@@ -24,7 +24,7 @@
   font-weight: 600;
   margin-bottom: 0.6rem;
   color: #333;
-  font-size: 1.1rem; /* Bigger label text */
+  font-size: 1.1rem; 
 }
 
 .form-group input[type="file"],

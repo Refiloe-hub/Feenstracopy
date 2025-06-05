@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './GuarantorInfo.css';
 
 export default function GuarantorInfo() {
-  const [idFile, setIdFile] = useState(null);
+  const [idFront, setIdFront] = useState(null);
+  const [idBack, setIdBack] = useState(null);
   const [payslips, setPayslips] = useState([]);
   const [bankStatements, setBankStatements] = useState([]);
   const [manualOverride, setManualOverride] = useState(false);
@@ -16,39 +17,39 @@ export default function GuarantorInfo() {
     const files = multiple ? Array.from(e.target.files) : e.target.files[0];
     setter(files);
 
-    if (setter === setIdFile && !multiple) {
-      // Trigger the Beeswax API call when ID is uploaded
-      fetchGuarantorInfo(files);
+    // Only trigger fetch if both front and back are selected
+    if ((setter === setIdFront && idBack) || (setter === setIdBack && idFront)) {
+      fetchGuarantorInfo(setter === setIdFront ? files : idFront, setter === setIdBack ? files : idBack);
     }
   };
 
- const fetchGuarantorInfo = async (file) => {
-  setLoading(true);
-  setApiError(null);
+  const fetchGuarantorInfo = async (frontFile, backFile) => {
+    setLoading(true);
+    setApiError(null);
 
-  try {
-    const formData = new FormData();
-    formData.append('id_document', file);
+    try {
+      const formData = new FormData();
+      formData.append('id_front', frontFile);
+      formData.append('id_back', backFile);
 
-    const response = await fetch('http://127.0.0.1:8000/verify-id', {
-      method: 'POST',
-      body: formData,
-    });
+      const response = await fetch('http://127.0.0.1:8000/verify-id', {
+        method: 'POST',
+        body: formData,
+      });
 
-    if (!response.ok) {
-      throw new Error('Failed to fetch info from server');
+      if (!response.ok) {
+        throw new Error('Failed to fetch info from server');
+      }
+
+      const data = await response.json();
+      setGuarantorInfo(data);
+    } catch (error) {
+      console.error(error);
+      setApiError(error.message);
+    } finally {
+      setLoading(false);
     }
-
-    const data = await response.json();
-    setGuarantorInfo(data);
-  } catch (error) {
-    console.error(error);
-    setApiError(error.message);
-  } finally {
-    setLoading(false);
-  }
-};
-
+  };
 
   const handleSubmit = () => {
     console.log('Processing ID, Payslips, Bank Statements...');
@@ -60,9 +61,8 @@ export default function GuarantorInfo() {
   };
 
   const handleProceed = () => {
-    
     console.log('Saving and moving to next step...');
-    navigate('/application-period'); 
+    navigate('/application-period');
   };
 
   return (
@@ -70,8 +70,21 @@ export default function GuarantorInfo() {
       <h2>Guarantor</h2>
 
       <div className="form-group">
-        <label>Upload Guarantor ID*</label>
-        <input type="file" onChange={(e) => handleFileUpload(e, setIdFile)} accept="application/pdf,image/*" />
+        <label>Upload Guarantor ID (Front)*</label>
+        <input
+          type="file"
+          accept="application/pdf,image/*"
+          onChange={(e) => handleFileUpload(e, setIdFront)}
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Upload Guarantor ID (Back)*</label>
+        <input
+          type="file"
+          accept="application/pdf,image/*"
+          onChange={(e) => handleFileUpload(e, setIdBack)}
+        />
         {loading && <p>Fetching details from Home Affairs...</p>}
         {apiError && <p className="error">Error: {apiError}</p>}
         {guarantorInfo && (
@@ -86,12 +99,22 @@ export default function GuarantorInfo() {
 
       <div className="form-group">
         <label>Upload Payslips*</label>
-        <input type="file" multiple onChange={(e) => handleFileUpload(e, setPayslips, true)} accept="application/pdf,image/*" />
+        <input
+          type="file"
+          multiple
+          accept="application/pdf,image/*"
+          onChange={(e) => handleFileUpload(e, setPayslips, true)}
+        />
       </div>
 
       <div className="form-group">
         <label>Upload Bank Statements*</label>
-        <input type="file" multiple onChange={(e) => handleFileUpload(e, setBankStatements, true)} accept="application/pdf,image/*" />
+        <input
+          type="file"
+          multiple
+          accept="application/pdf,image/*"
+          onChange={(e) => handleFileUpload(e, setBankStatements, true)}
+        />
       </div>
 
       <div className="form-group checkbox">

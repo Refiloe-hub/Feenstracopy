@@ -1,7 +1,7 @@
 .personal-info-container {
   background: #fff;
   padding: 2.5rem 2rem;
-  max-width: 600px;
+  width: 1200px;
   margin: 2rem auto;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -16,8 +16,9 @@
 h2 {
   text-align: center;
   margin-bottom: 2rem;
-  color: #2c3e50;
+  color: #000;
   font-size: 1.75rem;
+  font-weight: normal;
 }
 
 .form-group {
@@ -54,6 +55,7 @@ h2 {
   display: flex;
   align-items: center;
   font-size: 0.95rem;
+
 }
 
 .file-name {
@@ -71,6 +73,9 @@ h2 {
   border-radius: 6px;
   font-size: 1rem;
   transition: background 0.3s ease, color 0.3s ease;
+  width: 590px;
+  margin: auto;
+ 
 }
 
 .status.verified {
@@ -126,9 +131,12 @@ button:active {
 .prev-btn {
   background-color: #ccc;
   color: #333;
+  margin-left: 300px;
 }
 
 .next-btn {
   background-color: #007bff;
   color: white;
+  margin-right: 300px;
+
 }

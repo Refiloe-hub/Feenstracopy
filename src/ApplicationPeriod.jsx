@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './ApplicationPeriod.css';
 
 const RoomSelection = () => {
-  const location = useLocation();
-  const selectedRegion = location.state?.region || '';
 
   const regionToBuildings = {
     "Pretoria": [
@@ -18,10 +15,6 @@ const RoomSelection = () => {
     "Johannesburg": [
       "Arteria Parktown", "Crescent Studios"
     ]
-    
-
-   
-    
   };
 
   const roomTypes = [
@@ -102,24 +95,31 @@ const RoomSelection = () => {
     ]
   };
 
-  const [building, setBuilding] = useState('');
+  const allBuildings = Object.values(regionToBuildings).flat();
+
+  const [building, setBuilding] = useState(allBuildings[0] || '');
   const [leasePeriod, setLeasePeriod] = useState('');
   const [selectedRoomType, setSelectedRoomType] = useState('');
 
-  useEffect(() => {
-    const buildings = regionToBuildings[selectedRegion] || [];
-    if (buildings.length) {
-      setBuilding(buildings[0]);
-      setSelectedRoomType('');
-    }
-  }, [selectedRegion]);
+  const handleSelectRoom = (roomName) => {
+    setSelectedRoomType(roomName);
+    alert(`You selected: ${roomName}`);
+  };
 
-  const filteredRooms = roomTypes.filter((room) => {
-    const buildingRooms = buildingRoomTypes[building] || [];
-    const matchesBuilding = buildingRooms.includes(room.name);
-    const matchesType = selectedRoomType ? room.name === selectedRoomType : true;
-    return matchesBuilding && matchesType;
-  });
+  const escalateToAdmin = (roomName) => {
+    console.log(`Escalating room "${roomName}" to admin for review.`);
+    alert(`"${roomName}" is outside affordability range. Request sent to admin.`);
+  };
+
+  const filteredRooms = (buildingRoomTypes[building] || [])
+    .filter(roomName => selectedRoomType === '' || roomName === selectedRoomType)
+    .map(roomName => {
+      const room = roomTypes.find(r => r.name === roomName);
+      return {
+        name: roomName,
+        views: room ? room.views : 0
+      };
+    });
 
   const settings = {
     dots: true,
@@ -146,24 +146,11 @@ const RoomSelection = () => {
             setSelectedRoomType('');
           }}
         >
-          {(regionToBuildings[selectedRegion] || []).map((b, i) => (
+          {allBuildings.map((b, i) => (
             <option key={i} value={b}>{b}</option>
           ))}
         </select>
       </div>
-       <div className="form-group">
-        <label>Room Type</label>
-        <select
-          value={selectedRoomType}
-          onChange={(e) => setSelectedRoomType(e.target.value)}
-        >
-          <option value="">Select Room Type</option>
-          {buildingRoomTypes[building]?.map((room, i) => (
-            <option key={i} value={room}>{room}</option>
-          ))}
-        </select>
-      </div>
-
 
       <div className="form-group">
         <label>Lease Period</label>
@@ -174,31 +161,40 @@ const RoomSelection = () => {
         </select>
       </div>
 
-     
       <div className="carousel-wrapper">
-        <Slider {...settings}>
-          {filteredRooms.length > 0 ? (
-            filteredRooms.map((room, i) => (
-              <div key={i} className="slide-wrapper">
-                <div className={`room-card ${room.views > 100 ? 'within' : 'outside'}`}>
-                  <h4>{room.name}</h4>
-                  <p>Currently viewing: {room.views}</p>
-                  <span className="badge">
-                    {room.views > 100 ? 'Within Affordability Range' : 'Outside Affordability Range'}
-                  </span>
-                  <button className="info-btn">More Info</button>
-                </div>
-              </div>
-            ))
-          ) : (
-            <div className="slide-wrapper">
-              <div className="room-card">
-                <h4>No Available Rooms</h4>
-                <p>Please check another building or join the waitlist below.</p>
-              </div>
-            </div>
-          )}
-        </Slider>
+      <Slider {...settings}>
+  {filteredRooms.length > 0 ? (
+    filteredRooms.map((room, i) => (
+      <div key={i} className="slide-wrapper">
+        <div
+          className={`room-card ${room.views > 100 ? 'within' : 'outside'}`}
+          onClick={() => {
+            if (room.views > 100) {
+              handleSelectRoom(room.name);
+            } else {
+              escalateToAdmin(room.name);
+            }
+          }}
+          style={{ cursor: 'pointer' }}
+        >
+          <h4>{room.name}</h4>
+          <p>Currently viewing: {room.views}</p>
+          <span className="badge">
+            {room.views > 100 ? 'Within Affordability Range' : 'Outside Affordability Range'}
+          </span>
+        </div>
+      </div>
+    ))
+  ) : (
+    <div className="slide-wrapper">
+      <div className="room-card">
+        <h4>No Available Rooms</h4>
+        <p>Please check another building or join the waitlist below.</p>
+      </div>
+    </div>
+  )}
+</Slider>
+
       </div>
 
       {filteredRooms.length === 0 && (

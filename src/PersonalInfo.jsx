@@ -5,27 +5,37 @@ import './PersonalInfo.css';
 const PersonalInformation = () => {
   const navigate = useNavigate();
 
-  const [idFile, setIdFile] = useState(null);
+  const [idFront, setIdFront] = useState(null);
+  const [idBack, setIdBack] = useState(null);
   const [name, setName] = useState('John Doe');
   const [gender, setGender] = useState('Male');
   const [verified, setVerified] = useState(false);
   const [manualOverride, setManualOverride] = useState(false);
 
-  const handleUpload = (e) => {
-    setIdFile(e.target.files[0]);
-    // Mock verification
-    setVerified(true);
+  const handleFrontUpload = (e) => {
+    const file = e.target.files[0];
+    setIdFront(file);
+    if (file && idBack) {
+      setVerified(true); // mock verification
+    }
+  };
+
+  const handleBackUpload = (e) => {
+    const file = e.target.files[0];
+    setIdBack(file);
+    if (idFront && file) {
+      setVerified(true); // mock verification
+    }
   };
 
   const toggleOverride = () => setManualOverride(!manualOverride);
 
   const handleNext = () => {
-    // You can also validate or store data in context/state here
     navigate('/institution-info');
   };
 
   const handlePrevious = () => {
-    navigate(-1); // or navigate to a specific path if needed
+    navigate(-1);
   };
 
   return (
@@ -33,9 +43,15 @@ const PersonalInformation = () => {
       <h2>Personal Information</h2>
 
       <div className="form-group">
-        <label>Upload ID Document</label>
-        <input type="file" accept="image/*,application/pdf" onChange={handleUpload} />
-        {idFile && <p className="file-name">Uploaded: {idFile.name}</p>}
+        <label>Upload ID Document (Front)</label>
+        <input type="file" accept="image/*,application/pdf" onChange={handleFrontUpload} />
+        {idFront && <p className="file-name">Front Uploaded: {idFront.name}</p>}
+      </div>
+
+      <div className="form-group">
+        <label>Upload ID Document (Back)</label>
+        <input type="file" accept="image/*,application/pdf" onChange={handleBackUpload} />
+        {idBack && <p className="file-name">Back Uploaded: {idBack.name}</p>}
       </div>
 
       <div className="form-group">
