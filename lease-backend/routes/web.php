@@ -7,5 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route to handle ID verification upload from frontend
-Route::post('/verify-id', [BeeswaxController::class, 'verifyId']); 
+Route::post('/verify-id', [BeeswaxController::class, 'verifyId']);

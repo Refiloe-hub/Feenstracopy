@@ -7,6 +7,19 @@ class BeeswaxController extends Controller
 {
     public function verifyId(Request $request)
     {
+        // === MOCKING MODE: skip file check and return dummy response ===
+        if ($request->input('mock') === 'true') {
+            return response()->json([
+                'uniqueId' => '0',
+                'firstName' => 'Thapelo',
+                'surname' => 'Radebe',
+                'identityNumber' => '8802155321087',
+                'passport' => null,
+                'status' => 'Verified'
+            ]);
+        }
+
+        // === REAL MODE: validate uploaded file and send to Beeswax ===
         if (!$request->hasFile('id_document')) {
             return response()->json(['error' => 'No file uploaded'], 400);
         }
@@ -18,7 +31,10 @@ class BeeswaxController extends Controller
             ->post('https://publicapi.honeycombonline.co.za/natural-person-address');
 
         if ($response->failed()) {
-            return response()->json(['error' => 'Verification failed', 'details' => $response->json()], $response->status());
+            return response()->json([
+                'error' => 'Verification failed',
+                'details' => $response->json()
+            ], $response->status());
         }
 
         return response()->json($response->json());
